@@ -19,11 +19,6 @@ class UserCustomModelAdmin(CustomModelAdmin):
                 return None
     
     async def change_password(self, id: int, password: str) -> None:
-        """This method is used to change user password.
-
-        :params id: An user id.
-        :params password: A new password.
-        """
         async with self.uow:
             repo: SQLALchemyUserRepository = self.model_repository(self.uow.db_session)
             await repo.change_password(id, password)
