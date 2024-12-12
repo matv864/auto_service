@@ -27,7 +27,6 @@ app.mount("/admin", admin_app, "admin panel")
 main_app_router = APIRouter(prefix="/api")
 
 
-
 @app.exception_handler(ResultNotFound)
 async def result_not_found(
     request: Request, exc: ResultNotFound
