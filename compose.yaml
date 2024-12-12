@@ -1,15 +1,15 @@
 name: auto_service-backend
 
 services:
-  # backend:
-  #   container_name: backend
-  #   build: .
-  #   restart: always
-  #   env_file: .env
-  #   depends_on:
-  #     - database
-  #   ports:
-  #     - 8000:8000
+  backend:
+    container_name: backend
+    build: .
+    restart: always
+    env_file: .env
+    depends_on:
+      - database
+    ports:
+      - 8100:8100
 
   database:
     container_name: database
