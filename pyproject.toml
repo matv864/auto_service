@@ -1,0 +1,59 @@
+[project]
+name = "auto_service"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "BeaverNotACat", email = "beavernotacat@gmail.com" }
+]
+dependencies = [
+    "fastapi[standard]>=0.114.0",
+    "sqlalchemy>=2.0.34",
+    "pydantic-settings>=2.4.0",
+    "alembic>=1.13.2",
+    "psycopg2-binary>=2.9.9",
+    "aioboto3>=13.1.1",
+    "asyncpg>=0.29.0",
+    "python-dotenv>=1.0.1",
+    "fastadmin>=0.2.13",
+    "bcrypt>=4.2.0",
+    "passlib>=1.7.4",
+    "pydantic>=2.9.2",
+    "aiosmtplib>=3.0.2",
+    "smtplibaio>=2.1.2.post1",
+    "beautifulsoup4>=4.12.3",
+    "pandas>=2.2.3",
+    "numpy>=2.1.2",
+    "types-aiobotocore-s3>=2.15.2",
+    "httpx>=0.28.0",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "black>=24.8.0",
+    "ruff>=0.6.4",
+    "mypy>=1.11.2",
+    "isort>=5.13.2",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+
+[tool.mypy]
+# mypy src
+ignore_missing_imports = true
+
+# Exclude formatting to save order in admin panel
+[tool.isort]
+skip_glob = ["src/admin/admin_models/__init__.py"]
+[tool.black]
+force-exclude="src/admin/admin_models/__init__.py"
+[tool.ruff]
+exclude = ["src/admin/admin_models/__init__.py"]

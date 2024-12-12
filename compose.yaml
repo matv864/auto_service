@@ -1,0 +1,28 @@
+name: auto_service-backend
+
+services:
+  # backend:
+  #   container_name: backend
+  #   build: .
+  #   restart: always
+  #   env_file: .env
+  #   depends_on:
+  #     - database
+  #   ports:
+  #     - 8000:8000
+
+  database:
+    container_name: database
+    restart: always
+    image: postgres:latest
+    env_file: .env
+    volumes:
+      - ./dumps/testing.sql:/docker-entrypoint-initdb.d/testing.sql
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+
+volumes:
+  postgres-data:
+    name: postgres-data
