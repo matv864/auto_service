@@ -165,6 +165,42 @@ ALTER SEQUENCE public.services_id_seq OWNED BY public.services.id;
 
 
 --
+-- Name: student_requests; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.student_requests (
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    phone character varying(11) NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.student_requests OWNER TO admin;
+
+--
+-- Name: student_requests_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+--
+
+CREATE SEQUENCE public.student_requests_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.student_requests_id_seq OWNER TO admin;
+
+--
+-- Name: student_requests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
+--
+
+ALTER SEQUENCE public.student_requests_id_seq OWNED BY public.student_requests.id;
+
+
+--
 -- Name: channels id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -193,6 +229,13 @@ ALTER TABLE ONLY public.services ALTER COLUMN id SET DEFAULT nextval('public.ser
 
 
 --
+-- Name: student_requests id; Type: DEFAULT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('public.student_requests_id_seq'::regclass);
+
+
+--
 -- Data for Name: channels; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
@@ -213,6 +256,12 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 
 --
 -- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+
+
+--
+-- Data for Name: student_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
 
@@ -243,6 +292,13 @@ SELECT pg_catalog.setval('public.posts_id_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('public.services_id_seq', 1, false);
+
+
+--
+-- Name: student_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.student_requests_id_seq', 1, false);
 
 
 --
@@ -299,6 +355,14 @@ ALTER TABLE ONLY public.services
 
 ALTER TABLE ONLY public.services
     ADD CONSTRAINT services_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: student_requests student_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.student_requests
+    ADD CONSTRAINT student_requests_pkey PRIMARY KEY (id);
 
 
 --
