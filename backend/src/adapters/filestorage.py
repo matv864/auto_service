@@ -3,10 +3,12 @@ from io import BytesIO
 from uuid import uuid4
 from mimetypes import guess_extension
 
+from src.settings import settings
+
 
 class FilestorageGateway:
     def get_file_url(self, filename: str):
-        return f"/public/{filename}"
+        return f"{settings.BACKEND_DOMAIN}/public/{filename}"
 
     def upload_file(self, file: BytesIO, mimetype: str) -> str:
         flag_to_break = False
