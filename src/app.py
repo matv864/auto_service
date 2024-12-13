@@ -1,5 +1,5 @@
 from fastadmin import fastapi_app as admin_app
-from fastapi import APIRouter, FastAPI, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from starlette.responses import JSONResponse
@@ -10,6 +10,7 @@ from src.utils.exceptions import (
     ForeignKeyError
 )
 
+from src.api.router import auto_service_router
 
 app = FastAPI(
     title="auto_service backend",
@@ -24,7 +25,7 @@ app.add_middleware(
 
 app.mount("/admin", admin_app, "admin panel")
 
-main_app_router = APIRouter(prefix="/api")
+app.include_router(auto_service_router)
 
 
 @app.exception_handler(ResultNotFound)

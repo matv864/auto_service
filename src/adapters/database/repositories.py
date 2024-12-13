@@ -4,7 +4,8 @@ from .models import (
     Manager,
     Channel,
     Post,
-    Service
+    Service,
+    StudentRequest
 )
 
 
@@ -22,4 +23,8 @@ class PostRepository(SQLAlchemyRepository):
 
 class ServiceRepository(SQLAlchemyRepository):
     model = Service
+
+
+class StudentRequestRepository(SQLAlchemyRepository):
+    model = StudentRequest
 
