@@ -9,4 +9,4 @@ class ServiceService:
     
     async def get_services(self):
         result = await self.uow.repositories.service.find_all()
-        return [ServiceOutput(name=obj.name, description=obj.description, price=obj.price) for obj in result]
+        return [ServiceOutput(id=obj.id, name=obj.name, description=obj.description, price=obj.price) for obj in result]

@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
 
+    MAIL_LOGIN: str
+    MAIL_PASSWORD: str
+
     @cached_property
     def postgres_url(self):
         return (

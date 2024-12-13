@@ -3,13 +3,12 @@ from typing import Any
 from src.adapters.database.session import async_session_maker
 from src.adapters.database.repository_gateway import RepositoriesGateway
 from src.adapters.filestorage import FilestorageGateway
+from src.adapters.email_sender import EmailSender
 
 _sentinel: Any = object()
 
 
 class UnitOfWork:
-    repositories = _sentinel
-
     def __init__(self):
         self.db_session_factory = async_session_maker
 
@@ -18,6 +17,8 @@ class UnitOfWork:
 
         self.repositories = RepositoriesGateway(self.db_session)
         self.filestorage = FilestorageGateway()
+        self.notification = EmailSender()
+
 
     async def __aexit__(self, *args):
         await self.rollback()
