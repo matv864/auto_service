@@ -216,11 +216,11 @@ ALTER SEQUENCE public.services_id_seq OWNED BY public.services.id;
 CREATE TABLE public.student_requests (
     first_name character varying(30) NOT NULL,
     last_name character varying(30) NOT NULL,
-    phone character varying(11) NOT NULL,
+    phone character varying(20) NOT NULL,
     id integer NOT NULL,
     direction_id integer NOT NULL,
-    location character varying(200),
-    additional_contacts character varying(100)
+    location character varying(200) NOT NULL,
+    additional_contacts character varying(100) NOT NULL
 );
 
 
@@ -294,7 +294,7 @@ ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('pu
 -- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.alembic_version (version_num) VALUES ('b0c4417f138c');
+INSERT INTO public.alembic_version (version_num) VALUES ('082dc933b1b8');
 
 
 --
