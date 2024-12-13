@@ -98,6 +98,8 @@ class StudentRequest(Base):
 
     first_name: Mapped[str] = mapped_column(String(30))
     last_name: Mapped[str] = mapped_column(String(30))
+    location: Mapped[str] = mapped_column(String(200))
+    additional_contacts: Mapped[str] = mapped_column(String(100), default="")
     phone: Mapped[str] = mapped_column(String(11))
 
     direction_id: Mapped[int] = mapped_column(ForeignKey("directions.id"))

@@ -6,6 +6,8 @@ class StudentRequestInput(BaseModel):
 
     first_name: str = Field(..., max_length=30)
     last_name: str = Field(..., max_length=30)
+    location: str = Field(..., max_length=200)
+    additional_contacts: str = Field(..., max_length=100)
     phone: str = Field(pattern=r"^7\d{10}$")
 
     direction_id: int

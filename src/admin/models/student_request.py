@@ -24,9 +24,11 @@ class ServiceAdmin(CustomModelAdmin):
     search_fields = ("first_name", "last_name")
     raw_id_fields =("direction_id", )
 
-    fieldsets = ((None, {"fields": ("first_name", "last_name", "phone", "direction")},),)
+    fieldsets = ((None, {"fields": ("first_name", "last_name", "location", "additional_contacts", "phone", "direction")},),)
     formfield_overrides = {
         "first_name": (WidgetType.Input, {"required": True}),
         "last_name": (WidgetType.Input, {"required": True}),
+        "location": (WidgetType.TextArea, {"required": True}),
+        "additional_contacts": (WidgetType.TextArea, {"required": False}),
         "phone": (WidgetType.PhoneInput, {"required": True})
     }
