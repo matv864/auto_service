@@ -97,7 +97,7 @@ CREATE TABLE public.gallery (
     name character varying(50) NOT NULL,
     image character varying NOT NULL,
     id integer NOT NULL,
-    changing_date timestamp with time zone
+    changing_date timestamp with time zone NOT NULL
 );
 
 
@@ -172,7 +172,7 @@ CREATE TABLE public.posts (
     text character varying(300) NOT NULL,
     id integer NOT NULL,
     image character varying,
-    changing_date timestamp with time zone
+    changing_date timestamp with time zone NOT NULL
 );
 
 
@@ -211,7 +211,7 @@ CREATE TABLE public.service_requests (
     service_id integer NOT NULL,
     id integer NOT NULL,
     additional_contacts character varying(100) NOT NULL,
-    changing_date timestamp with time zone
+    changing_date timestamp with time zone NOT NULL
 );
 
 
@@ -287,7 +287,7 @@ CREATE TABLE public.student_requests (
     direction_id integer NOT NULL,
     location character varying(200) NOT NULL,
     additional_contacts character varying(100) NOT NULL,
-    changing_date timestamp with time zone
+    changing_date timestamp with time zone NOT NULL
 );
 
 
@@ -313,6 +313,41 @@ ALTER SEQUENCE public.student_requests_id_seq OWNER TO admin;
 --
 
 ALTER SEQUENCE public.student_requests_id_seq OWNED BY public.student_requests.id;
+
+
+--
+-- Name: workers; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.workers (
+    name character varying(50) NOT NULL,
+    email character varying(50) NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.workers OWNER TO admin;
+
+--
+-- Name: workers_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+--
+
+CREATE SEQUENCE public.workers_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.workers_id_seq OWNER TO admin;
+
+--
+-- Name: workers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
+--
+
+ALTER SEQUENCE public.workers_id_seq OWNED BY public.workers.id;
 
 
 --
@@ -372,6 +407,13 @@ ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: workers id; Type: DEFAULT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.workers ALTER COLUMN id SET DEFAULT nextval('public.workers_id_seq'::regclass);
+
+
+--
 -- Data for Name: channels; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
@@ -411,6 +453,9 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 --
 
 INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '1', 2, 1, '', '2024-12-13 13:32:13.445345+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 4, 'моя телега', '2024-12-13 14:37:15.852665+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 5, 'моя телега', '2024-12-13 14:46:40.842671+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 6, 'моя телега', '2024-12-13 15:10:35.936898+00');
 
 
 --
@@ -426,6 +471,16 @@ INSERT INTO public.services (name, description, price, id) VALUES ('замена
 --
 
 INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '2', 5, 1, 'Евразия', '', '2024-12-13 13:32:24.37974+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 6, 1, 'из России', 'моя телега', '2024-12-13 14:38:46.355373+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 7, 1, 'из России', 'моя телега', '2024-12-13 14:46:46.569726+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 8, 1, 'из России', 'моя телега', '2024-12-13 15:10:43.697337+00');
+
+
+--
+-- Data for Name: workers; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+INSERT INTO public.workers (name, email, id) VALUES ('Матвей', 'matv864@gmail.com', 1);
 
 
 --
@@ -467,7 +522,7 @@ SELECT pg_catalog.setval('public.posts_id_seq', 5, true);
 -- Name: service_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.service_requests_id_seq', 1, true);
+SELECT pg_catalog.setval('public.service_requests_id_seq', 6, true);
 
 
 --
@@ -481,7 +536,14 @@ SELECT pg_catalog.setval('public.services_id_seq', 2, true);
 -- Name: student_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.student_requests_id_seq', 5, true);
+SELECT pg_catalog.setval('public.student_requests_id_seq', 8, true);
+
+
+--
+-- Name: workers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.workers_id_seq', 1, true);
 
 
 --
@@ -570,6 +632,14 @@ ALTER TABLE ONLY public.services
 
 ALTER TABLE ONLY public.student_requests
     ADD CONSTRAINT student_requests_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: workers workers_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.workers
+    ADD CONSTRAINT workers_pkey PRIMARY KEY (id);
 
 
 --
