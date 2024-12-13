@@ -22,6 +22,17 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: alembic_version; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.alembic_version (
+    version_num character varying(32) NOT NULL
+);
+
+
+ALTER TABLE public.alembic_version OWNER TO admin;
+
+--
 -- Name: channels; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -53,6 +64,40 @@ ALTER SEQUENCE public.channels_id_seq OWNER TO admin;
 --
 
 ALTER SEQUENCE public.channels_id_seq OWNED BY public.channels.id;
+
+
+--
+-- Name: directions; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.directions (
+    name character varying(50) NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.directions OWNER TO admin;
+
+--
+-- Name: directions_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+--
+
+CREATE SEQUENCE public.directions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.directions_id_seq OWNER TO admin;
+
+--
+-- Name: directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
+--
+
+ALTER SEQUENCE public.directions_id_seq OWNED BY public.directions.id;
 
 
 --
@@ -172,7 +217,10 @@ CREATE TABLE public.student_requests (
     first_name character varying(30) NOT NULL,
     last_name character varying(30) NOT NULL,
     phone character varying(11) NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    direction_id integer NOT NULL,
+    location character varying(200),
+    additional_contacts character varying(100)
 );
 
 
@@ -208,6 +256,13 @@ ALTER TABLE ONLY public.channels ALTER COLUMN id SET DEFAULT nextval('public.cha
 
 
 --
+-- Name: directions id; Type: DEFAULT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.directions ALTER COLUMN id SET DEFAULT nextval('public.directions_id_seq'::regclass);
+
+
+--
 -- Name: managers id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -236,9 +291,24 @@ ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+INSERT INTO public.alembic_version (version_num) VALUES ('b0c4417f138c');
+
+
+--
 -- Data for Name: channels; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO public.channels (name, id) VALUES ('канал', 1);
+
+
+--
+-- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+INSERT INTO public.directions (name, id) VALUES ('специальность - механик', 1);
 
 
 --
@@ -252,25 +322,36 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 -- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO public.posts (channel_id, title, text, id) VALUES (1, 'пост', '', 1);
 
 
 --
 -- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO public.services (name, description, price, id) VALUES ('услуги', '', 1.64, 1);
 
 
 --
 -- Data for Name: student_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts) VALUES ('1', '1', '9', 3, 1, '1', '1');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts) VALUES ('string', 'string', '78796085976', 4, 1, 'string', 'string');
 
 
 --
 -- Name: channels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.channels_id_seq', 1, false);
+SELECT pg_catalog.setval('public.channels_id_seq', 1, true);
+
+
+--
+-- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.directions_id_seq', 1, true);
 
 
 --
@@ -284,21 +365,29 @@ SELECT pg_catalog.setval('public.managers_id_seq', 1, true);
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.posts_id_seq', 1, true);
 
 
 --
 -- Name: services_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.services_id_seq', 1, false);
+SELECT pg_catalog.setval('public.services_id_seq', 1, true);
 
 
 --
 -- Name: student_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.student_requests_id_seq', 1, false);
+SELECT pg_catalog.setval('public.student_requests_id_seq', 4, true);
+
+
+--
+-- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.alembic_version
+    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
 
 
 --
@@ -315,6 +404,14 @@ ALTER TABLE ONLY public.channels
 
 ALTER TABLE ONLY public.channels
     ADD CONSTRAINT channels_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directions directions_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.directions
+    ADD CONSTRAINT directions_pkey PRIMARY KEY (id);
 
 
 --
@@ -371,6 +468,14 @@ ALTER TABLE ONLY public.student_requests
 
 ALTER TABLE ONLY public.posts
     ADD CONSTRAINT posts_channel_id_fkey FOREIGN KEY (channel_id) REFERENCES public.channels(id);
+
+
+--
+-- Name: student_requests student_requests_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.student_requests
+    ADD CONSTRAINT student_requests_direction_id_fkey FOREIGN KEY (direction_id) REFERENCES public.directions(id);
 
 
 --
