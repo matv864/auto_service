@@ -1,5 +1,3 @@
-
-
 function Card() {
     return (
         <div class="ml-8 mr-8 shadow-xl bg-black rounded-3xl flex justify-beetwen items-center p-4">
@@ -17,3 +15,6 @@ function Card() {
   }
   
   export default Card;
+
+
+  

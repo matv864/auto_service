@@ -30,7 +30,7 @@ function Second() {
             </div>
 
             <div className="h-[120px] flex justify-center items-center">
-                <button className="h-[50px] sm:h-[80px] w-[70%] sm:w-[40%] bg-black rounded-3xl absolute bottom-[40px] sm:bottom-[20px] flex justify-center items-center shadow-lg">
+                <button className="h-[50px] sm:h-[80px] w-[70%] sm:w-[40%] bg-black rounded-3xl absolute bottom-[40px] sm:bottom-[40px] flex justify-center items-center shadow-lg">
                     <div className="text-white font-bold text-center text-base sm:text-xl">
                         Посмотреть еще...
                     </div>
