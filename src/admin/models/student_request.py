@@ -17,15 +17,15 @@ class ServiceAdmin(CustomModelAdmin):
 
     model_repository = StudentRequestRepository
 
-    list_display = ("fisrt_name", "last_name", "phone")
-    list_display_links = ("fisrt_name", "last_name")
-    list_filter = ("fisrt_name", "last_name")
+    list_display = ("first_name", "last_name", "phone")
+    list_display_links = ("first_name", "last_name")
+    list_filter = ("first_name", "last_name")
 
-    search_fields = ("fisrt_name", "last_name")
+    search_fields = ("first_name", "last_name")
 
-    fieldsets = ((None, {"fields": ("fisrt_name", "last_name", "phone")},),)
+    fieldsets = ((None, {"fields": ("first_name", "last_name", "phone")},),)
     formfield_overrides = {
-        "fisrt_name": (WidgetType.Input, {"required": True}),
+        "first_name": (WidgetType.Input, {"required": True}),
         "last_name": (WidgetType.Input, {"required": True}),
         "phone": (WidgetType.PhoneInput, {"required": True})
     }
