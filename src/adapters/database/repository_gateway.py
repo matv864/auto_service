@@ -3,7 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.adapters.database.repositories import (
     ChannelRepository,
     PostRepository,
-    ServiceRepository
+    ServiceRepository,
+    StudentRequestRepository
 )
 
 
@@ -12,4 +13,5 @@ class RepositoriesGateway:
         self.channel = ChannelRepository(session)
         self.post = PostRepository(session)
         self.service = ServiceRepository(session)
+        self.student_request = StudentRequestRepository(session)
        

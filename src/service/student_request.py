@@ -7,5 +7,5 @@ class StudentRequestService:
         self.uow = uow
     
     async def add_request(self, payload: StudentRequestInput) -> None:
-        await self.uow.repositories.student_request.add_one(**payload)
+        await self.uow.repositories.student_request.add_one(**payload.model_dump())
         await self.uow.commit()
