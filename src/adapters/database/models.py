@@ -17,10 +17,7 @@ class Base(AsyncAttrs, DeclarativeBase):
 
 class BaseWithTelemetryTimestamps(Base):
     __abstract__ = True
-    create_date: Mapped[datetime] = mapped_column(
-        TIMESTAMP(timezone=True), default=utc_signed_now
-    )
-    modify_date: Mapped[datetime] = mapped_column(
+    changing_date: Mapped[datetime] = mapped_column(
         TIMESTAMP(timezone=True), default=utc_signed_now, onupdate=utc_signed_now
     )
 
@@ -51,7 +48,7 @@ class Channel(Base):
         return f"{self.name}"
 
 
-class Post(Base):
+class Post(BaseWithTelemetryTimestamps):
     __tablename__ = "posts"
 
     channel_id: Mapped[int] = mapped_column(ForeignKey("channels.id"))
@@ -85,7 +82,7 @@ class Service(Base):
         return f"{self.name} - {self.price}"
     
 
-class ServiceRequest(Base):
+class ServiceRequest(BaseWithTelemetryTimestamps):
     __tablename__ = "service_requests"
 
     first_name: Mapped[str] = mapped_column(String(30))
@@ -115,7 +112,7 @@ class Direction(Base):
         return f"{self.name}"
 
 
-class StudentRequest(Base):
+class StudentRequest(BaseWithTelemetryTimestamps):
     __tablename__ = "student_requests"
 
     first_name: Mapped[str] = mapped_column(String(30))
@@ -132,9 +129,8 @@ class StudentRequest(Base):
         return f"{self.first_name} {self.last_name}"
 
 
-class Gallery(Base):
+class Gallery(BaseWithTelemetryTimestamps):
     __tablename__ = "gallery"
-
 
     name: Mapped[str] = mapped_column(String(50), default="")
     image: Mapped[str]

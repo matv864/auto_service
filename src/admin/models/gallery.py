@@ -17,13 +17,14 @@ class PostAdmin(CustomModelAdmin):
 
     model_repository = GalleryRepository
 
-    list_display = ("name",)
+    list_display = ("name", "changing_date")
     list_display_links = ("name",)
     list_filter = ("name",)
 
     search_fields = ("name",)
+    readonly_fields = ("changing_date", )
 
-    fieldsets = ((None, {"fields": ("name", "image")},),)
+    fieldsets = ((None, {"fields": ("name", "image", "changing_date")},),)
     formfield_overrides = {
         "name": (WidgetType.Input, {"required": False}),
         "image": (WidgetType.Upload, {"required": True}),

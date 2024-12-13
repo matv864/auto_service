@@ -17,12 +17,13 @@ class PostAdmin(CustomModelAdmin):
 
     model_repository = PostRepository
 
-    list_display = ("title", "channel", "text")
+    list_display = ("title", "changing_date", "text")
     list_display_links = ("title",)
     list_filter = ("title",)
 
     search_fields = ("title",)
     raw_id_fields = ("channel_id", )
+    readonly_fields = ("changing_date", )
 
     fieldsets = ((None, {"fields": ("channel", "title", "text", "image")},),)
     formfield_overrides = {

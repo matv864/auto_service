@@ -22,17 +22,6 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: alembic_version; Type: TABLE; Schema: public; Owner: admin
---
-
-CREATE TABLE public.alembic_version (
-    version_num character varying(32) NOT NULL
-);
-
-
-ALTER TABLE public.alembic_version OWNER TO admin;
-
---
 -- Name: channels; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -107,7 +96,8 @@ ALTER SEQUENCE public.directions_id_seq OWNED BY public.directions.id;
 CREATE TABLE public.gallery (
     name character varying(50) NOT NULL,
     image character varying NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    changing_date timestamp with time zone
 );
 
 
@@ -181,7 +171,8 @@ CREATE TABLE public.posts (
     title character varying(50) NOT NULL,
     text character varying(300) NOT NULL,
     id integer NOT NULL,
-    image character varying
+    image character varying,
+    changing_date timestamp with time zone
 );
 
 
@@ -219,7 +210,8 @@ CREATE TABLE public.service_requests (
     phone character varying(20) NOT NULL,
     service_id integer NOT NULL,
     id integer NOT NULL,
-    additional_contacts character varying(100) NOT NULL
+    additional_contacts character varying(100) NOT NULL,
+    changing_date timestamp with time zone
 );
 
 
@@ -294,7 +286,8 @@ CREATE TABLE public.student_requests (
     id integer NOT NULL,
     direction_id integer NOT NULL,
     location character varying(200) NOT NULL,
-    additional_contacts character varying(100) NOT NULL
+    additional_contacts character varying(100) NOT NULL,
+    changing_date timestamp with time zone
 );
 
 
@@ -379,13 +372,6 @@ ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: admin
---
-
-INSERT INTO public.alembic_version (version_num) VALUES ('f6a8fa88907b');
-
-
---
 -- Data for Name: channels; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
@@ -424,7 +410,7 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 -- Data for Name: service_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts) VALUES ('имя', 'фамилия', '1', 2, 1, '');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '1', 2, 1, '', '2024-12-13 13:32:13.445345+00');
 
 
 --
@@ -439,7 +425,7 @@ INSERT INTO public.services (name, description, price, id) VALUES ('замена
 -- Data for Name: student_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts) VALUES ('имя', 'фамилия', '2', 5, 1, 'Евразия', '');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '2', 5, 1, 'Евразия', '', '2024-12-13 13:32:24.37974+00');
 
 
 --
@@ -496,14 +482,6 @@ SELECT pg_catalog.setval('public.services_id_seq', 2, true);
 --
 
 SELECT pg_catalog.setval('public.student_requests_id_seq', 5, true);
-
-
---
--- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: admin
---
-
-ALTER TABLE ONLY public.alembic_version
-    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
 
 
 --
