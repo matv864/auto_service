@@ -75,8 +75,28 @@ class Service(Base):
     description: Mapped[str] = mapped_column(String(300), default="")
     price: Mapped[float] = mapped_column(DECIMAL(10, 2))
 
+    service_requests: Mapped[list["ServiceRequest"]] = relationship(
+        back_populates="service", lazy="selectin", cascade="all, delete-orphan"
+    )
+
     def __str__(self):
         return f"{self.name} - {self.price}"
+    
+
+class ServiceRequest(Base):
+    __tablename__ = "service_requests"
+
+    first_name: Mapped[str] = mapped_column(String(30))
+    last_name: Mapped[str] = mapped_column(String(30))
+
+    phone: Mapped[str] = mapped_column(String(20))
+    additional_contacts: Mapped[str] = mapped_column(String(100), default="")
+
+    service_id: Mapped[int] = mapped_column(ForeignKey("services.id"))
+    service: Mapped[Service] = relationship(back_populates="service_requests", lazy="selectin")
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 
@@ -99,8 +119,9 @@ class StudentRequest(Base):
     first_name: Mapped[str] = mapped_column(String(30))
     last_name: Mapped[str] = mapped_column(String(30))
     location: Mapped[str] = mapped_column(String(200))
-    additional_contacts: Mapped[str] = mapped_column(String(100), default="")
     phone: Mapped[str] = mapped_column(String(20))
+    additional_contacts: Mapped[str] = mapped_column(String(100), default="")
+    
 
     direction_id: Mapped[int] = mapped_column(ForeignKey("directions.id"))
     direction: Mapped[Direction] = relationship(back_populates="student_requests", lazy="selectin")

@@ -10,14 +10,14 @@ from src.schemas.admin.student_requests import Student_requests_create, Student_
 
 @register(StudentRequest, sqlalchemy_sessionmaker=async_session_maker)
 class ServiceAdmin(CustomModelAdmin):
-    StudentRequest.__name__ = "Заявки"
+    StudentRequest.__name__ = "Обучение Заявки"
 
     schema_create = Student_requests_create
     schema_update = Student_requests_update
 
     model_repository = StudentRequestRepository
 
-    list_display = ("first_name", "last_name", "phone")
+    list_display = ("first_name", "last_name", "direction", "phone")
     list_display_links = ("first_name", "last_name")
     list_filter = ("first_name", "last_name")
 

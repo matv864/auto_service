@@ -17,7 +17,7 @@ class ServiceAdmin(CustomModelAdmin):
 
     model_repository = ServiceRepository
 
-    list_display = ("name",)
+    list_display = ("name", "price", "description")
     list_display_links = ("name",)
     list_filter = ("name",)
 

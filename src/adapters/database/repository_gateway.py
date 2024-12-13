@@ -4,6 +4,7 @@ from src.adapters.database.repositories import (
     ChannelRepository,
     PostRepository,
     ServiceRepository,
+    ServiceRequestRepository,
     DirectionRepository,
     StudentRequestRepository,
 )
@@ -14,6 +15,7 @@ class RepositoriesGateway:
         self.channel = ChannelRepository(session)
         self.post = PostRepository(session)
         self.service = ServiceRepository(session)
+        self.service_requests = ServiceRequestRepository(session)
         self.direction = DirectionRepository(session)
         self.student_request = StudentRequestRepository(session)
        

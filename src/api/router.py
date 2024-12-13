@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends
 from src.service.channel import ChannelService
 from src.service.post import PostService
 from src.service.service import ServiceService
+from src.service.service_request import ServiceRequestService
 from src.service.direction import DirectionService
 from src.service.student_request import StudentRequestService
 
@@ -12,6 +13,7 @@ from src.service.student_request import StudentRequestService
 from src.schemas.api.channels import ChannelOutput
 from src.schemas.api.posts import PostOutput
 from src.schemas.api.services import ServiceOutput
+from src.schemas.api.service_requests import ServiceRequestInput, ServiceRequestOutput
 from src.schemas.api.directions import DirectionOutput
 from src.schemas.api.student_requests import StudentRequestInput, StudentRequestOutput
 
@@ -43,6 +45,16 @@ async def get_services(
 ):
     async with uow:
         return await ServiceService(uow).get_services()
+
+@auto_service_router.post("/service-request", response_model=ServiceRequestOutput)
+async def add_service_request(
+    uow: Annotated[UnitOfWork, Depends(UnitOfWork)],
+    payload: ServiceRequestInput
+):
+    async with uow:
+        await ServiceRequestService(uow).add_request(payload)
+    return dict()
+
 
 @auto_service_router.get("/directions", response_model=list[DirectionOutput])
 async def get_directions(

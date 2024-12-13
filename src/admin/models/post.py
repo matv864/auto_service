@@ -17,7 +17,7 @@ class PostAdmin(CustomModelAdmin):
 
     model_repository = PostRepository
 
-    list_display = ("title",)
+    list_display = ("title", "channel", "text")
     list_display_links = ("title",)
     list_filter = ("title",)
 
