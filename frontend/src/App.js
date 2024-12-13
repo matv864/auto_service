@@ -1,14 +1,17 @@
-import Header from "./components/header";
-import Body from "./components/body";
-import Footer from "./components/footer";
+import MainPage from "./components/mainPage";
+
+import { BrowserRouter, Routes, Route } from "react-router";
 
 
 function App() {
   return (
-    <div className="App" class="flex flex-col min-h-screen">
-      <Header/>
-      <Body/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="education" element={<MainPage />} />
+        <Route path="service" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
