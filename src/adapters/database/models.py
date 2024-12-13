@@ -137,3 +137,13 @@ class Gallery(BaseWithTelemetryTimestamps):
 
     def __str__(self):
         return f"{self.name}"
+    
+
+class Worker(Base):
+    __tablename__ = "workers"
+
+    name: Mapped[str] = mapped_column(String(50))
+    email: Mapped[str] = mapped_column(String(50))
+
+    def __str__(self):
+        return f"{self.name} {self.email}"

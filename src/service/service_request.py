@@ -8,7 +8,7 @@ class ServiceRequestService:
     
     async def add_request(self, payload: ServiceRequestInput) -> None:
         await self.uow.notification.send_email(
-            receivers=[],
+            receivers=[obj.email for obj in (await self.uow.repositories.worker.find_all())],
             title="У вас новая запись на услугу!",
             body=(
                 f"Новая запись на услугу:   {(await self.uow.repositories.service.find_one(id=payload.service_id)).name}\n\n" +

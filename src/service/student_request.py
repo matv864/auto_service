@@ -8,8 +8,8 @@ class StudentRequestService:
     
     async def add_request(self, payload: StudentRequestInput) -> None:
         await self.uow.notification.send_email(
-            receivers=[],
-            title="У вас новая запись на обучению!",
+            receivers=[obj.email for obj in (await self.uow.repositories.worker.find_all())],
+            title="У вас новая запись на обучение!",
             body=(
                 "Новая запись на обучение по направлению:   " +
                 f"{(await self.uow.repositories.direction.find_one(id=payload.direction_id)).name}\n\n" +
