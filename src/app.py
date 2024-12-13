@@ -11,6 +11,7 @@ from src.utils.exceptions import (
 )
 
 from src.api.router import auto_service_router
+from src.api.filestorage import filestorage_router
 
 app = FastAPI(
     title="auto_service backend",
@@ -26,6 +27,7 @@ app.add_middleware(
 app.mount("/admin", admin_app, "admin panel")
 
 app.include_router(auto_service_router)
+app.include_router(filestorage_router)
 
 
 @app.exception_handler(ResultNotFound)

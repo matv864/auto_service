@@ -63,6 +63,8 @@ class Post(Base):
     title: Mapped[str] = mapped_column(String(50))
     text: Mapped[str] = mapped_column(String(300), default="")
 
+    image: Mapped[str] = mapped_column(nullable=True)
+
     def __str__(self):
         return f"{self.title} - {self.text[:10]}"
 

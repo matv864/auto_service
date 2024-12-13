@@ -24,8 +24,9 @@ class PostAdmin(CustomModelAdmin):
     search_fields = ("title",)
     raw_id_fields = ("channel_id", )
 
-    fieldsets = ((None, {"fields": ("channel", "title", "text")},),)
+    fieldsets = ((None, {"fields": ("channel", "title", "text", "image")},),)
     formfield_overrides = {
         "title": (WidgetType.Input, {"required": True}),
         "text": (WidgetType.TextArea, {"required": False}),
+        "image": (WidgetType.Upload, {"required": False}),
     }
