@@ -15,7 +15,7 @@ class Service_requests_create(BaseModel):
 class Service_requests_update(BaseModel):
     first_name: Optional[str] = Field(None, max_length=30)
     last_name: Optional[str] = Field(None, max_length=30)
-    additional_contacts: str = Field(None, max_length=100)
+    additional_contacts: Optional[str] = Field(None, max_length=100)
     phone: Optional[str] = Field(None, max_length=20)
 
     service_id: Optional[int] = None

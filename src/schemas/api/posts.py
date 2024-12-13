@@ -7,3 +7,4 @@ class PostOutput(BaseModel):
     channel_id: int
     title: str
     text: str
+    image: str

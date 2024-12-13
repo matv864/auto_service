@@ -16,8 +16,8 @@ class Student_requests_create(BaseModel):
 class Student_requests_update(BaseModel):
     first_name: Optional[str] = Field(None, max_length=30)
     last_name: Optional[str] = Field(None, max_length=30)
-    location: str = Field(None, max_length=200)
-    additional_contacts: str = Field(None, max_length=100)
+    location: Optional[str] = Field(None, max_length=200)
+    additional_contacts: Optional[str] = Field(None, max_length=100)
     phone: Optional[str] = Field(None, max_length=20)
 
     direction_id: Optional[int] = None

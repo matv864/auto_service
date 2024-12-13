@@ -130,3 +130,14 @@ class StudentRequest(Base):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class Gallery(Base):
+    __tablename__ = "gallery"
+
+
+    name: Mapped[str] = mapped_column(String(50), default="")
+    image: Mapped[str]
+
+    def __str__(self):
+        return f"{self.name}"

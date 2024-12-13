@@ -7,7 +7,8 @@ from .models import (
     Service,
     ServiceRequest,
     Direction,
-    StudentRequest
+    StudentRequest,
+    Gallery
 )
 
 
@@ -38,3 +39,6 @@ class DirectionRepository(SQLAlchemyRepository):
 class StudentRequestRepository(SQLAlchemyRepository):
     model = StudentRequest
 
+
+class GalleryRepository(SQLAlchemyRepository):
+    model = Gallery

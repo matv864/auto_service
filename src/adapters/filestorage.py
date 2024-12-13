@@ -19,7 +19,7 @@ class FilestorageGateway:
                 flag_to_break = True
 
         extension = guess_extension(mimetype)
-        full_filename = f"{new_filename}.{extension}"
+        full_filename = f"{new_filename}{extension}"
 
         with open(f"public/{full_filename}", "wb") as f:
             f.write(file.getbuffer())

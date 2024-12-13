@@ -13,6 +13,7 @@ class PostService:
             PostOutput(
                 channel_id=obj.channel_id,
                 title=obj.title,
-                text=obj.text
+                text=obj.text,
+                image=self.uow.filestorage.get_file_url(obj.image)
             ) for obj in result
         ]

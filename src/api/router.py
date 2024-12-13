@@ -8,6 +8,7 @@ from src.service.service import ServiceService
 from src.service.service_request import ServiceRequestService
 from src.service.direction import DirectionService
 from src.service.student_request import StudentRequestService
+from src.service.gallery import GalleryService
 
 
 from src.schemas.api.channels import ChannelOutput
@@ -16,6 +17,7 @@ from src.schemas.api.services import ServiceOutput
 from src.schemas.api.service_requests import ServiceRequestInput, ServiceRequestOutput
 from src.schemas.api.directions import DirectionOutput
 from src.schemas.api.student_requests import StudentRequestInput, StudentRequestOutput
+from src.schemas.api.gallery import GalleryOutput
 
 from src.unit_of_work import UnitOfWork
 
@@ -71,3 +73,11 @@ async def add_student_request(
     async with uow:
         await StudentRequestService(uow).add_request(payload)
     return dict()
+
+
+@auto_service_router.post("/gallery", response_model=list[GalleryOutput])
+async def get_gallery(
+    uow: Annotated[UnitOfWork, Depends(UnitOfWork)],
+):
+    async with uow:
+        return await GalleryService(uow).get_gallery()

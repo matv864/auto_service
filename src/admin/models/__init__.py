@@ -5,3 +5,4 @@ from .service import Service as Service
 from .service_request import ServiceRequest as ServiceRequest
 from .direction import Direction as Direction
 from .student_request import StudentRequest as StudentRequest
+from .gallery import Gallery as Gallery

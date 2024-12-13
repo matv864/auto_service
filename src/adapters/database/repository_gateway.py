@@ -7,6 +7,7 @@ from src.adapters.database.repositories import (
     ServiceRequestRepository,
     DirectionRepository,
     StudentRequestRepository,
+    GalleryRepository,
 )
 
 
@@ -18,4 +19,5 @@ class RepositoriesGateway:
         self.service_requests = ServiceRequestRepository(session)
         self.direction = DirectionRepository(session)
         self.student_request = StudentRequestRepository(session)
+        self.gallery = GalleryRepository(session)
        
