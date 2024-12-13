@@ -85,6 +85,10 @@ class Direction(Base):
 
     name: Mapped[str] = mapped_column(String(50))
 
+    student_requests: Mapped[list["StudentRequest"]] = relationship(
+        back_populates="direction", lazy="selectin", cascade="all, delete-orphan"
+    )
+
     def __str__(self):
         return f"{self.name}"
 
@@ -95,6 +99,9 @@ class StudentRequest(Base):
     first_name: Mapped[str] = mapped_column(String(30))
     last_name: Mapped[str] = mapped_column(String(30))
     phone: Mapped[str] = mapped_column(String(11))
+
+    direction_id: Mapped[int] = mapped_column(ForeignKey("directions.id"))
+    direction: Mapped[Direction] = relationship(back_populates="student_requests", lazy="selectin")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

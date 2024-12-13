@@ -8,6 +8,8 @@ class StudentRequestInput(BaseModel):
     last_name: str = Field(..., max_length=30)
     phone: str = Field(pattern=r"^7\d{10}$")
 
+    direction_id: int
+
 
 class StudentRequestOutput(BaseModel):
     pass
