@@ -5,6 +5,7 @@ from .models import (
     Channel,
     Post,
     Service,
+    Direction,
     StudentRequest
 )
 
@@ -23,6 +24,10 @@ class PostRepository(SQLAlchemyRepository):
 
 class ServiceRepository(SQLAlchemyRepository):
     model = Service
+
+
+class DirectionRepository(SQLAlchemyRepository):
+    model = Direction
 
 
 class StudentRequestRepository(SQLAlchemyRepository):

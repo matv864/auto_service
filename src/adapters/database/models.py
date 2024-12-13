@@ -79,6 +79,16 @@ class Service(Base):
         return f"{self.name} - {self.price}"
 
 
+
+class Direction(Base):
+    __tablename__ = "directions"
+
+    name: Mapped[str] = mapped_column(String(50))
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class StudentRequest(Base):
     __tablename__ = "student_requests"
 
