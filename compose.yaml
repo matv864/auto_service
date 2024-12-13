@@ -9,7 +9,7 @@ services:
     depends_on:
       - database
     ports:
-      - 8100:8100
+      - 8100:8000
 
   database:
     container_name: database
