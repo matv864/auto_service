@@ -80,7 +80,7 @@ class Service(Base):
 
 
 class StudentRequest(Base):
-    __tablename__ = "services"
+    __tablename__ = "student_requests"
 
     first_name: Mapped[str] = mapped_column(String(30))
     last_name: Mapped[str] = mapped_column(String(30))
