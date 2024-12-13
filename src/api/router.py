@@ -18,7 +18,7 @@ from src.unit_of_work import UnitOfWork
 auto_service_router = APIRouter()
 
 
-@auto_service_router.get("/channels", response_model=ChannelOutput)
+@auto_service_router.get("/channels", response_model=list[ChannelOutput])
 async def get_channels(
     uow: Annotated[UnitOfWork, Depends(UnitOfWork)]
 ):
@@ -26,7 +26,7 @@ async def get_channels(
         return await ChannelService(uow).get_channels()
 
 
-@auto_service_router.get("/posts", response_model=PostOutput)
+@auto_service_router.get("/posts", response_model=list[PostOutput])
 async def get_posts_from_channel(
     uow: Annotated[UnitOfWork, Depends(UnitOfWork)],
     channel_id: int
@@ -35,7 +35,7 @@ async def get_posts_from_channel(
         return await PostService(uow).get_posts(channel_id=channel_id)
 
 
-@auto_service_router.get("/services", response_model=ServiceOutput)
+@auto_service_router.get("/services", response_model=list[ServiceOutput])
 async def get_services(
     uow: Annotated[UnitOfWork, Depends(UnitOfWork)]
 ):
