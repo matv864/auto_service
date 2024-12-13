@@ -101,6 +101,41 @@ ALTER SEQUENCE public.directions_id_seq OWNED BY public.directions.id;
 
 
 --
+-- Name: gallery; Type: TABLE; Schema: public; Owner: admin
+--
+
+CREATE TABLE public.gallery (
+    name character varying(50) NOT NULL,
+    image character varying NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.gallery OWNER TO admin;
+
+--
+-- Name: gallery_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+--
+
+CREATE SEQUENCE public.gallery_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.gallery_id_seq OWNER TO admin;
+
+--
+-- Name: gallery_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin
+--
+
+ALTER SEQUENCE public.gallery_id_seq OWNED BY public.gallery.id;
+
+
+--
 -- Name: managers; Type: TABLE; Schema: public; Owner: admin
 --
 
@@ -145,7 +180,8 @@ CREATE TABLE public.posts (
     channel_id integer NOT NULL,
     title character varying(50) NOT NULL,
     text character varying(300) NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    image character varying
 );
 
 
@@ -301,6 +337,13 @@ ALTER TABLE ONLY public.directions ALTER COLUMN id SET DEFAULT nextval('public.d
 
 
 --
+-- Name: gallery id; Type: DEFAULT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.gallery ALTER COLUMN id SET DEFAULT nextval('public.gallery_id_seq'::regclass);
+
+
+--
 -- Name: managers id; Type: DEFAULT; Schema: public; Owner: admin
 --
 
@@ -339,7 +382,7 @@ ALTER TABLE ONLY public.student_requests ALTER COLUMN id SET DEFAULT nextval('pu
 -- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.alembic_version (version_num) VALUES ('3c5e822dc3d3');
+INSERT INTO public.alembic_version (version_num) VALUES ('f6a8fa88907b');
 
 
 --
@@ -359,6 +402,12 @@ INSERT INTO public.directions (name, id) VALUES ('хорошее направл�
 
 
 --
+-- Data for Name: gallery; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+
+
+--
 -- Data for Name: managers; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
@@ -369,8 +418,6 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 -- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.posts (channel_id, title, text, id) VALUES (1, 'пост', '', 1);
-INSERT INTO public.posts (channel_id, title, text, id) VALUES (2, 'заголовок поста в канале получше', 'его текст', 2);
 
 
 --
@@ -410,6 +457,13 @@ SELECT pg_catalog.setval('public.directions_id_seq', 2, true);
 
 
 --
+-- Name: gallery_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.gallery_id_seq', 2, true);
+
+
+--
 -- Name: managers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
@@ -420,7 +474,7 @@ SELECT pg_catalog.setval('public.managers_id_seq', 1, true);
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 2, true);
+SELECT pg_catalog.setval('public.posts_id_seq', 5, true);
 
 
 --
@@ -474,6 +528,14 @@ ALTER TABLE ONLY public.channels
 
 ALTER TABLE ONLY public.directions
     ADD CONSTRAINT directions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: gallery gallery_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+--
+
+ALTER TABLE ONLY public.gallery
+    ADD CONSTRAINT gallery_pkey PRIMARY KEY (id);
 
 
 --

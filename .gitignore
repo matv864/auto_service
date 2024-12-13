@@ -25,4 +25,4 @@ requirements-dev.lock
 db.yaml
 
 # object storage
-dumps/minio/*
+public/*
