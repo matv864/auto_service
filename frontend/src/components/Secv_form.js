@@ -13,12 +13,12 @@ function Serv_form() {
       <Header />
       <body className="bg-white flex items-center justify-center min-h-screen">
         <div className="bg-black text-white p-8 md:p-16 rounded-2xl w-full max-w-6xl border border-white">
-          <h1 className="text-[#E86931] text-3xl md:text-4xl font-bold mb-6 md:mb-10">Header</h1>
+          <h1 className="text-[#E86931] text-3xl md:text-4xl font-bold mb-6 md:mb-10">Монтаж, балансировка, снятие/установка "бэдлоков"</h1>
           <p className="text-white text-lg md:text-xl mb-8 md:mb-12">
-            Description
+          По этой услуге мы лучшие в городе
           </p>
           <p className="text-white text-lg md:text-xl font-bold mb-8 md:mb-12">
-            Стоимость: <span className="font-bold">бесценно</span>
+            Стоимость: <span className="font-bold">от 10000 р.</span>
           </p>
           <form
             onSubmit={handleSubmit}

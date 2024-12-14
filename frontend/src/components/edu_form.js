@@ -1,15 +1,17 @@
 import Header from "./header";
 import Footer from "./footer";
+import { useNavigate } from "react-router-dom";
 
 function Edu_form() {
+    const navigate = useNavigate(); 
   return (
     <div className="App flex flex-col min-h-screen">
       <Header />
       <body class="bg-white flex items-center justify-center min-h-screen">
         <div class="bg-black text-white p-8 md:p-16 rounded-2xl w-full max-w-6xl border border-white">
-            <h1 class="text-[#E86931] text-3xl md:text-4xl font-bold mb-6 md:mb-10">Header</h1>
+            <h1 class="text-[#E86931] text-3xl md:text-4xl font-bold mb-6 md:mb-10">Автооценщик</h1>
                 <p class="text-white text-lg md:text-xl mb-8 md:mb-12">
-                    Discription
+                Специалист, занимающийся оценкой состояния автомобиля, полученных им повреждений
                 </p>
                 <form action="#" method="POST" class="space-y-6 md:space-y-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -25,7 +27,9 @@ function Edu_form() {
         </div>
       </div>
       <div class="flex justify-end mt-6 md:mt-8">
-        <button type="submit" 
+        <button 
+
+            onClick={() => navigate("/#head")}
                 class="bg-white text-black border border-white font-bold py-3 px-6 md:py-3 md:px-10 rounded-2xl text-lg md:text-xl">
           Отправить
         </button>
