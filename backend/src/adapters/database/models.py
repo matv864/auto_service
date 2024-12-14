@@ -57,8 +57,8 @@ class Post(BaseWithTelemetryTimestamps):
         lazy="selectin",
     )
 
-    title: Mapped[str] = mapped_column(String(50))
-    text: Mapped[str] = mapped_column(String(300), default="")
+    title: Mapped[str] = mapped_column(String(100))
+    text: Mapped[str] = mapped_column(String(500), default="")
 
     image: Mapped[str] = mapped_column(nullable=True)
 
@@ -72,14 +72,14 @@ class Service(Base):
     name: Mapped[str] = mapped_column(String(50), unique=True)
 
     description: Mapped[str] = mapped_column(String(300), default="")
-    price: Mapped[float] = mapped_column(DECIMAL(10, 2))
+    price: Mapped[str] = mapped_column(String(50))
 
     service_requests: Mapped[list["ServiceRequest"]] = relationship(
         back_populates="service", lazy="selectin", cascade="all, delete-orphan"
     )
 
     def __str__(self):
-        return f"{self.name} - {self.price}"
+        return f"{self.name}   {self.price}"
     
 
 class ServiceRequest(BaseWithTelemetryTimestamps):
