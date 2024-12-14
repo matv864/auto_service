@@ -61,7 +61,8 @@ ALTER SEQUENCE public.channels_id_seq OWNED BY public.channels.id;
 
 CREATE TABLE public.directions (
     name character varying(50) NOT NULL,
-    id integer NOT NULL
+    id integer NOT NULL,
+    description character varying(500) NOT NULL
 );
 
 
@@ -245,7 +246,7 @@ ALTER SEQUENCE public.service_requests_id_seq OWNED BY public.service_requests.i
 
 CREATE TABLE public.services (
     name character varying(50) NOT NULL,
-    description character varying(300) NOT NULL,
+    description character varying(500) NOT NULL,
     price character varying(50) NOT NULL,
     id integer NOT NULL
 );
@@ -426,9 +427,9 @@ INSERT INTO public.channels (name, id) VALUES ('Из мира автоспорт
 -- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.directions (name, id) VALUES ('автослесарь', 3);
-INSERT INTO public.directions (name, id) VALUES ('автомеханик', 4);
-INSERT INTO public.directions (name, id) VALUES ('сварщик', 5);
+INSERT INTO public.directions (name, id, description) VALUES ('автослесарь', 3, '');
+INSERT INTO public.directions (name, id, description) VALUES ('автомеханик', 4, '');
+INSERT INTO public.directions (name, id, description) VALUES ('сварщик', 5, '');
 
 
 --
