@@ -5,7 +5,7 @@ function Header() {
           <nav class="flex justify-center items-center" >
             <div class="size-20">
               <a href="/#head">
-                <img src="/images/logo.png"></img>
+                <img src="/logo.png" alt="logo"></img>
               </a>
               
             </div>
