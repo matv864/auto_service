@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Edu_form() {
     const navigate = useNavigate(); 
-  return (
+    return (
     <div className="App flex flex-col min-h-screen">
       <Header />
       <body class="bg-white flex items-center justify-center min-h-screen">
@@ -28,10 +28,9 @@ function Edu_form() {
       </div>
       <div class="flex justify-end mt-6 md:mt-8">
         <button 
-
-            onClick={() => navigate("/#head")}
-                class="bg-white text-black border border-white font-bold py-3 px-6 md:py-3 md:px-10 rounded-2xl text-lg md:text-xl">
-          Отправить
+            onClick={() => navigate("/MainPage")}
+            class="bg-white text-black border border-white font-bold py-3 px-6 md:py-3 md:px-10 rounded-2xl text-lg md:text-xl">
+            Отправить
         </button>
       </div>
     </form>
