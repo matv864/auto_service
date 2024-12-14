@@ -17,7 +17,7 @@ function Third() {
 
             <div className="flex justify-center">
                 <img
-                    src="/images/Галерея.png"
+                    src="/Галерея.png"
                     alt="Галерея EV Service"
                     className="w-full max-w-md sm:max-w-lg lg:max-w-3xl rounded-lg shadow-lg"
                 />

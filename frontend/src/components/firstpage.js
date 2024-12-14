@@ -6,7 +6,7 @@ function First() {
     return (
         <div className="relative w-full h-screen overflow-hidden">
             <img
-                src="/images/image 2.png"
+                src="/image 2.png"
                 className="absolute inset-0 w-full h-full object-cover blur scale-105"
                 alt="Background"
             />
