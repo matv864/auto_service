@@ -75,7 +75,7 @@ async def add_student_request(
     return dict()
 
 
-@auto_service_router.post("/gallery", response_model=list[GalleryOutput])
+@auto_service_router.get("/gallery", response_model=list[GalleryOutput])
 async def get_gallery(
     uow: Annotated[UnitOfWork, Depends(UnitOfWork)],
 ):
