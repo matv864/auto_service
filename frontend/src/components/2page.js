@@ -42,7 +42,8 @@ function Second() {
         {channels.map((channel) => (
           <div className="flex justify-center" key={channel.id}>
             <button
-              className="w-[150px] sm:w-[200px] h-[60px] sm:h-[100px] shadow-xl rounded-3xl bg-black text-white font-bold text-2xl sm:text-3xl "
+              id="proj"
+              className="w-[150px] sm:w-[200px] h-[60px] sm:h-[100px] shadow-xl rounded-3xl bg-black text-white font-bold text-sm sm:text-xl "
               onClick={() => handleChannelClick(channel.id)}
             >
               {channel.name}

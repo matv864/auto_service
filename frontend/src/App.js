@@ -1,5 +1,6 @@
 import MainPage from "./components/mainPage";
 import Service from "./components/Service";
+import Education from "./components/Educ";
 
 import { BrowserRouter, Routes, Route } from "react-router";
 
@@ -9,8 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<MainPage />} />
-        <Route path="education" element={<Service />} />
-        <Route path="service" element={<Service />} />
+        <Route path="education" element={<Education/>} />
+        <Route path="service" element={<Service/>} />
       </Routes>
     </BrowserRouter>
   );
