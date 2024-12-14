@@ -20,7 +20,7 @@ function Educ_card() {
             {cards.map((card) => (
                 <div key={card.id} className="flex justify-center p-4">
                     <div className="h-full w-[90%] bg-black rounded-2xl grid grid-rows-3 justify-center items-center text-white text-center p-4">
-                        <p className="text-3xl">{card.name}</p>
+                        <p className="text-2xl text-[#E86931] font-bold">{card.name}</p>
                         <p className="text-xl">{card.description || "Описание отсутствует"}</p>
                         <div className="h-full">
                             <button className="bg-white rounded-xl text-black h-full w-[90%] text-center items-center font-bold text-2xl">
@@ -28,6 +28,7 @@ function Educ_card() {
                             </button>
                         </div>
                     </div>
+
                 </div>
             ))}
         </>

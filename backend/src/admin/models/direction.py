@@ -17,11 +17,14 @@ class ChannelAdmin(CustomModelAdmin):
 
     model_repository = DirectionRepository
 
-    list_display = ("name",)
+    list_display = ("name", "description")
     list_display_links = ("name",)
-    list_filter = ("name",)
+    list_filter = ("name", "description")
 
-    search_fields = ("name",)
+    search_fields = ("name", "description")
 
-    fieldsets = ((None, {"fields": ("name",)},),)
-    formfield_overrides = {"name": (WidgetType.Input, {"required": True}),}
+    fieldsets = ((None, {"fields": ("name", "description")},),)
+    formfield_overrides = {
+        "name": (WidgetType.Input, {"required": True}),
+        "description": (WidgetType.TextArea, {"required": False}),
+    }

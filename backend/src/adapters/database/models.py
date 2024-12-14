@@ -71,7 +71,7 @@ class Service(Base):
 
     name: Mapped[str] = mapped_column(String(50), unique=True)
 
-    description: Mapped[str] = mapped_column(String(300), default="")
+    description: Mapped[str] = mapped_column(String(500), default="")
     price: Mapped[str] = mapped_column(String(50))
 
     service_requests: Mapped[list["ServiceRequest"]] = relationship(
@@ -103,6 +103,7 @@ class Direction(Base):
     __tablename__ = "directions"
 
     name: Mapped[str] = mapped_column(String(50))
+    description: Mapped[str] = mapped_column(String(500), default="")
 
     student_requests: Mapped[list["StudentRequest"]] = relationship(
         back_populates="direction", lazy="selectin", cascade="all, delete-orphan"
