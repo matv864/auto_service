@@ -7,7 +7,7 @@ function Serv_card({ name, description, price }) {
                     {description || "Описание отсутствует"}
                 </p>
                 <p className="text-lg sm:text-xl md:text-2xl text-start">
-                    Стоимость: {price}
+                    Стоимость: {price || "Цена отсутствует"}
                 </p>
                 <div className="h-full flex justify-center items-center">
                     <button className="bg-white rounded-xl text-black h-10 w-[80%] sm:h-12 sm:w-[70%] md:h-14 md:w-[60%] text-center font-bold text-base sm:text-lg md:text-xl">

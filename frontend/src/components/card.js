@@ -4,7 +4,7 @@ function Card({ title, text, image }) {
         <div className="h-full w-[40%] sm:p-4">
           <div className="h-full w-full rounded-xl bg-white">
             {/* Используем переданный пропс image для отображения изображения */}
-            <img src={image || "/images/default-image.png"} className="rounded-xl w-full h-full" alt={title} />
+            <img src={image || "frontend/images/default.png"} className="rounded-xl w-full h-full" alt={title} />
           </div>
         </div>
         <div className="h-full w-full pl-[4px] sm:pl-4 sm:pt-2">
