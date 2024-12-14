@@ -53,7 +53,7 @@ function Second() {
       </div>
 
       {/* Отображаем карточки контента */}
-      <div className="px-4 sm:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="px-4 pb-4 sm:px-10 grid grid-cols-1 xl:grid-cols-2 gap-6">
         {loading ? (
           <p className="text-white">Загрузка...</p>
         ) : (
@@ -65,7 +65,7 @@ function Second() {
 
       <div className="h-[120px] flex justify-center items-center">
         <button className="h-[50px] sm:h-[80px] w-[70%] sm:w-[40%] bg-black rounded-3xl absolute bottom-[40px] sm:bottom-[40px] flex justify-center items-center shadow-lg">
-          <div className="text-white font-bold text-center text-base sm:text-xl">
+          <div className="text-white font-bold text-center text-sm sm:text-lg">
             Посмотреть еще...
           </div>
         </button>
