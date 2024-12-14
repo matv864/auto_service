@@ -7,4 +7,4 @@ class ServiceOutput(BaseModel):
     id: int
     name: str
     description: str
-    price: float
+    price: str

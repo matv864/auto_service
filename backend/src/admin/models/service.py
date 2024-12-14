@@ -27,5 +27,5 @@ class ServiceAdmin(CustomModelAdmin):
     formfield_overrides = {
         "name": (WidgetType.Input, {"required": True}),
         "decription": (WidgetType.TextArea, {"required": False}),
-        "price": (WidgetType.InputNumber, {"required": True})
+        "price": (WidgetType.Input, {"required": True})
     }

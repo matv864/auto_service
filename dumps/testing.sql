@@ -168,8 +168,8 @@ ALTER SEQUENCE public.managers_id_seq OWNED BY public.managers.id;
 
 CREATE TABLE public.posts (
     channel_id integer NOT NULL,
-    title character varying(50) NOT NULL,
-    text character varying(300) NOT NULL,
+    title character varying(100) NOT NULL,
+    text character varying(500) NOT NULL,
     id integer NOT NULL,
     image character varying,
     changing_date timestamp with time zone NOT NULL
@@ -246,7 +246,7 @@ ALTER SEQUENCE public.service_requests_id_seq OWNED BY public.service_requests.i
 CREATE TABLE public.services (
     name character varying(50) NOT NULL,
     description character varying(300) NOT NULL,
-    price numeric(10,2) NOT NULL,
+    price character varying(50) NOT NULL,
     id integer NOT NULL
 );
 
@@ -417,16 +417,18 @@ ALTER TABLE ONLY public.workers ALTER COLUMN id SET DEFAULT nextval('public.work
 -- Data for Name: channels; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.channels (name, id) VALUES ('канал', 1);
-INSERT INTO public.channels (name, id) VALUES ('канал получше', 2);
+INSERT INTO public.channels (name, id) VALUES ('Наши проекты', 3);
+INSERT INTO public.channels (name, id) VALUES ('События нашего портала', 5);
+INSERT INTO public.channels (name, id) VALUES ('Из мира автоспорта', 4);
 
 
 --
 -- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.directions (name, id) VALUES ('специальность - механик', 1);
-INSERT INTO public.directions (name, id) VALUES ('хорошее направление', 2);
+INSERT INTO public.directions (name, id) VALUES ('автослесарь', 3);
+INSERT INTO public.directions (name, id) VALUES ('автомеханик', 4);
+INSERT INTO public.directions (name, id) VALUES ('сварщик', 5);
 
 
 --
@@ -446,34 +448,44 @@ INSERT INTO public.managers (first_name, second_name, phone, password, id) VALUE
 -- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (3, 'Новая услуга', 'На следующей неделе мы хотим ввести услугу замены масла', 6, NULL, '2024-12-13 23:28:42.555902+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (3, 'Восстановление раритета', 'В прошлом месяце мы решили восстановить старую волгу. Здесь вы можете видеть результаты', 7, NULL, '2024-12-13 23:30:37.579431+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (5, 'Открытие этого канала', 'Мы решили открыть этот канал, чтобы делиться внутренней жизнью нашего сервиса.', 8, NULL, '2024-12-13 23:32:49.286808+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (3, 'Скоро новый арт-объект', 'В прошлом месяце мы собирали всевозможные детали, не сказав зачем мы это делаем. Теперь вы знаете почему)', 9, NULL, '2024-12-13 23:34:40.016495+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (5, 'Техническое обслуживание 01.01-04.01', 'Нашим серверам тоже нужно немного отдохнуть', 10, NULL, '2024-12-13 23:35:42.697564+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (5, 'Ищем хозяина собаки', 'Вчера нашли собаку с именным ошейником без хозяина. Надеемся, что хозяин увидит это сообщение', 11, NULL, '2024-12-13 23:37:10.357104+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (4, ' Льюис Хэмилтон настаивает на своём', 'Ранее на этой неделе появились слухи, что Льюис Хэмилтон обратился к «Феррари» на тему того, может ли он продолжать использовать французские тормоза Carbon Industrie, к которым он привык в «Мерседесе».', 12, NULL, '2024-12-13 23:40:42.465364+00');
+INSERT INTO public.posts (channel_id, title, text, id, image, changing_date) VALUES (4, 'Габриэл Бортолето признан ФИА новичком года', '20-летний бразилец Габриэл Бортолето признан Международной автомобильной федерацией (ФИА) лучшим новичком года. За него проголосовали члены комитета гонщиков ФИА.', 13, NULL, '2024-12-13 23:41:51.72688+00');
 
 
 --
 -- Data for Name: service_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '1', 2, 1, '', '2024-12-13 13:32:13.445345+00');
-INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 4, 'моя телега', '2024-12-13 14:37:15.852665+00');
-INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 5, 'моя телега', '2024-12-13 14:46:40.842671+00');
-INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Хороший', 'Человек', '79502926021', 2, 6, 'моя телега', '2024-12-13 15:10:35.936898+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Михаил ', 'Гончаров', '74387494238', 3, 7, 'telegram - t.me/mikha1999', '2024-12-14 00:09:57.813688+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Тимофей', 'Антонов', '74378989243', 3, 8, '', '2024-12-14 00:10:26.752699+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Егор', 'Платонов', '79323278882', 6, 9, '', '2024-12-14 00:10:52.38983+00');
+INSERT INTO public.service_requests (first_name, last_name, phone, service_id, id, additional_contacts, changing_date) VALUES ('Роман', 'Николаев', '79132325490', 5, 10, 'vk - vk.com/roma', '2024-12-14 00:11:53.745856+00');
 
 
 --
 -- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.services (name, description, price, id) VALUES ('услуги', '', 1.64, 1);
-INSERT INTO public.services (name, description, price, id) VALUES ('замена масла', '', 1000.54, 2);
+INSERT INTO public.services (name, description, price, id) VALUES ('Монтаж, балансировка, снятие/установка "бэдлоков"', 'По этой услуге мы лучшие в городе', 'от 10000 р.', 3);
+INSERT INTO public.services (name, description, price, id) VALUES ('Ремонт колеса латкой', 'Цена может варьироваться в зависимости от серьёзности прокола', 'от 450 р.', 4);
+INSERT INTO public.services (name, description, price, id) VALUES ('Балансировка колеса', 'Цена может меняться в зависимости от типа автомобиля', 'от 200 р', 5);
+INSERT INTO public.services (name, description, price, id) VALUES ('Ошиповка колеса', '', 'от 1000 р. за колесо', 6);
+INSERT INTO public.services (name, description, price, id) VALUES ('Подкачка колёс', 'Воздух всё ещё бесплатный', 'Бесплатно', 7);
 
 
 --
 -- Data for Name: student_requests; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Имя', 'Фамилия', '2', 5, 1, 'Евразия', '', '2024-12-13 13:32:24.37974+00');
-INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 6, 1, 'из России', 'моя телега', '2024-12-13 14:38:46.355373+00');
-INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 7, 1, 'из России', 'моя телега', '2024-12-13 14:46:46.569726+00');
-INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Норм', 'Чел', '79502926021', 8, 1, 'из России', 'моя телега', '2024-12-13 15:10:43.697337+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Дмитрий', 'Комаров', '72132565687', 9, 5, 'из Казахстана', 'tg.me/komar', '2024-12-14 00:12:55.166177+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Иван', 'Абрамов', '79340912091', 10, 3, 'Москва', '', '2024-12-14 00:13:57.826369+00');
+INSERT INTO public.student_requests (first_name, last_name, phone, id, direction_id, location, additional_contacts, changing_date) VALUES ('Дмитрий', 'Симонов', '79129065463', 11, 4, 'Махачкала', '', '2024-12-14 00:14:27.003835+00');
 
 
 --
@@ -481,20 +493,21 @@ INSERT INTO public.student_requests (first_name, last_name, phone, id, direction
 --
 
 INSERT INTO public.workers (name, email, id) VALUES ('Матвей', 'matv864@gmail.com', 1);
+INSERT INTO public.workers (name, email, id) VALUES ('Антон', 'legkii.ad@dvfu.ru', 2);
 
 
 --
 -- Name: channels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.channels_id_seq', 2, true);
+SELECT pg_catalog.setval('public.channels_id_seq', 5, true);
 
 
 --
 -- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.directions_id_seq', 2, true);
+SELECT pg_catalog.setval('public.directions_id_seq', 5, true);
 
 
 --
@@ -515,35 +528,35 @@ SELECT pg_catalog.setval('public.managers_id_seq', 1, true);
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 5, true);
+SELECT pg_catalog.setval('public.posts_id_seq', 13, true);
 
 
 --
 -- Name: service_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.service_requests_id_seq', 6, true);
+SELECT pg_catalog.setval('public.service_requests_id_seq', 10, true);
 
 
 --
 -- Name: services_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.services_id_seq', 2, true);
+SELECT pg_catalog.setval('public.services_id_seq', 7, true);
 
 
 --
 -- Name: student_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.student_requests_id_seq', 8, true);
+SELECT pg_catalog.setval('public.student_requests_id_seq', 11, true);
 
 
 --
 -- Name: workers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public.workers_id_seq', 1, true);
+SELECT pg_catalog.setval('public.workers_id_seq', 2, true);
 
 
 --
