@@ -6,3 +6,4 @@ class DirectionOutput(BaseModel):
 
     id: int
     name: str
+    description: str
