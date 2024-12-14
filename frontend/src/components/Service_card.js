@@ -2,7 +2,7 @@ function Serv_card({ name, description, price }) {
     return (
         <div className="flex justify-center p-4">
             <div className="h-full w-full max-w-md bg-black rounded-2xl grid grid-rows-4 justify-center items-center text-white text-center p-4 sm:p-6">
-                <p className="text-xl sm:text-2xl md:text-3xl">{name}</p>
+                <p className="text-[#E86931] font-bold text-md sm:text-xl lg:text-xl">{name}</p>
                 <p className="text-sm sm:text-base md:text-xl">
                     {description || "Описание отсутствует"}
                 </p>
