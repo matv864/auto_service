@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Educ_card() {
+    const navigate = useNavigate(); // Хук для навигации
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
@@ -23,7 +25,7 @@ function Educ_card() {
                         <p className="text-2xl text-[#E86931] font-bold">{card.name}</p>
                         <p className="text-xl">{card.description || "Описание отсутствует"}</p>
                         <div className="h-full">
-                            <button className="bg-white rounded-xl text-black h-full w-[90%] text-center items-center font-bold text-2xl">
+                            <button onClick={() => navigate("/edu_form")} className="bg-white rounded-xl text-black h-full w-[90%] text-center items-center font-bold text-2xl">
                                 Записаться
                             </button>
                         </div>
