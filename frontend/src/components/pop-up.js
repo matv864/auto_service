@@ -5,7 +5,7 @@ const PopupCard = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowCard(true);
+      setShowCard(true); 
     }, 60000); // 60 секунд
 
     return () => clearTimeout(timer);
