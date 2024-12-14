@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import Card from "./card";
 
 function Second() {
-  // Состояние для каналов и контента
   const [channels, setChannels] = useState([]);
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [activeChannel, setActiveChannel] = useState(null); // Хранит активный канал
 
   // Загружаем каналы при монтировании компонента
   useEffect(() => {
@@ -14,6 +14,11 @@ function Second() {
         const response = await fetch('https://backend.auto.love-this-domen.ru/channels');
         const data = await response.json();
         setChannels(data);
+
+        // Если каналы загружены, сразу отображаем первый
+        if (data.length > 0) {
+          handleChannelClick(data[0].id);
+        }
       } catch (error) {
         console.error("Ошибка при загрузке каналов:", error);
       }
@@ -24,6 +29,7 @@ function Second() {
   // Функция для загрузки контента для конкретного канала
   const handleChannelClick = async (channelId) => {
     setLoading(true);
+    setActiveChannel(channelId); // Устанавливаем активный канал
     try {
       const response = await fetch(`https://backend.auto.love-this-domen.ru/posts?channel_id=${channelId}`);
       const data = await response.json();
@@ -43,7 +49,11 @@ function Second() {
           <div className="flex justify-center" key={channel.id}>
             <button
               id="proj"
-              className="w-[150px] sm:w-[200px] h-[60px] sm:h-[100px] shadow-xl rounded-3xl bg-black text-white font-bold text-sm sm:text-xl "
+              className={`w-[150px] sm:w-[200px] h-[60px] sm:h-[100px] shadow-xl rounded-3xl font-bold text-sm sm:text-xl ${
+                activeChannel === channel.id
+                  ? "bg-orange-500 text-white " // Активная кнопка
+                  : "bg-black text-white" // Неактивная кнопка
+              }`}
               onClick={() => handleChannelClick(channel.id)}
             >
               {channel.name}
