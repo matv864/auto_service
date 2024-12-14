@@ -1,17 +1,38 @@
+import { useEffect, useState } from "react";
 import Serv_card from "./Service_card";
 
 function Second_page() {
+  const [services, setServices] = useState([]);
+
+  // Получение данных из API
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("https://backend.auto.love-this-domen.ru/services", {
+          headers: {
+            accept: "application/json",
+          },
+        });
+        const data = await response.json();
+        setServices(data); // Сохраняем данные в стейт
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
   return (
-    <div className="App" class="relative p-6 flex-grow h-[150vh] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-4">
-      <Serv_card/>
-      <Serv_card/>
-      {/* <div className="h-[120px] flex justify-center items-center">
-        <button className="h-[50px] sm:h-[80px] w-[70%] sm:w-[40%] bg-black rounded-3xl absolute bottom-[40px] sm:bottom-[40px] flex justify-center items-center shadow-lg">
-          <div className="text-white font-bold text-center text-base sm:text-xl">
-            Посмотреть еще...
-          </div>
-        </button>
-      </div> */}
+    <div className="relative p-6 flex-grow h-[150vh] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-4">
+      {services.map((service) => (
+        <Serv_card
+          key={service.id}
+          name={service.name}
+          description={service.description}
+          price={service.price}
+        />
+      ))}
     </div>
   );
 }

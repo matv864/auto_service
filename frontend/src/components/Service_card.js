@@ -1,19 +1,19 @@
-
-function Serv_card() {
+function Serv_card({ name, description, price }) {
     return (
-        <div class=" p-4">
-            <div class="h-full w-[90%] bg-black rounded-2xl grid grid-rows-4 justify-center items-center text-white text-center p-4">
-                <p class="text-3xl">Header</p>
-                <p class="text-xl">DicriptionDicriptionDicription</p>
-                <p class="text-2xl text-start">Стоимость: </p>
-                <div class="h-full">
-                    <button class="bg-white rounded-xl text-black h-full w-[90%] text-center items-center font-bold text-2xl">
-                        Записаться
-                    </button>
-                </div>
-            </div>
+      <div className=" flex justify-center p-4">
+        <div className="h-full w-[90%] bg-black rounded-2xl grid grid-rows-4 justify-center items-center text-white text-center p-4">
+          <p className="text-3xl">{name}</p>
+          <p className="text-xl">{description || "Описание отсутствует"}</p>
+          <p className="text-2xl text-start">Стоимость: {price}</p>
+          <div className="h-full">
+            <button className="bg-white rounded-xl text-black h-full w-[90%] text-center items-center font-bold text-2xl">
+              Записаться
+            </button>
+          </div>
         </div>
+      </div>
     );
   }
   
   export default Serv_card;
+  

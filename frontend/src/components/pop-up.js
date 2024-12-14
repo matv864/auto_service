@@ -6,7 +6,7 @@ const PopupCard = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCard(true); 
-    }, 60000); // 60 секунд
+    }, 5000); // 60 секунд
 
     return () => clearTimeout(timer);
   }, []);
@@ -18,8 +18,13 @@ const PopupCard = () => {
   return (
     showCard && (
       <div className="z-20 fixed bottom-4 left-4 bg-orange-500 text-white p-4 rounded-lg shadow-lg flex justify-between items-center">
-        <div className="text-black">
-          <p>Позвоните нам!!!!</p>
+        <div className="text-white text-xl">
+        <p>
+          Есть вопросы? Мы поможем!<br />
+          Позвони по номеру <strong>+79284563211</strong><br />
+          Консультация по телефону бесплатно
+        </p>
+
         </div>
         <button
           onClick={handleClose}
