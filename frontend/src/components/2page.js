@@ -70,7 +70,7 @@ function Second() {
         </button>
       </div>
 
-      <div className="px-4 sm:px-40 font-bold text-3xl sm:text-5xl text-center absolute bottom-[-25px] sm:text-left pt-[40px] sm:pt-[60px]">
+      <div className="px-4 sm:px-40 font-bold text-3xl sm:text-5xl text-center absolute bottom-[-10px] sm:text-left pt-[40px] sm:pt-[60px]">
         <div>О Компании</div>
       </div>
     </main>
