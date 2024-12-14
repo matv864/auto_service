@@ -15,13 +15,67 @@ function Third() {
                 Мы гордимся индивидуальным подходом к каждому клиенту и прозрачностью в расчетах. Наша цель — обеспечить ваш автомобиль качественными услугами по доступным ценам и вернуть его в идеальное техническое состояние. Обращайтесь к нам, и мы гарантируем, что ваш автомобиль будет надежно работать, не доставляя вам неприятных сюрпризов на дороге.
             </div>
 
-            <div className="flex justify-center">
-                <img
-                    src="/Галерея.png"
-                    alt="Галерея EV Service"
-                    className="w-full max-w-md sm:max-w-lg lg:max-w-3xl rounded-lg shadow-lg"
-                />
-            </div>
+            <div className="h-full w-full p-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+    {/* Первая картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image 6.png"
+        alt="Image 1"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+
+    {/* Вторая картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image 7.png"
+        alt="Image 2"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+
+    {/* Третья картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image 7-1.png"
+        alt="Image 3"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+
+
+    {/* Пятая картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image 8.png"
+        alt="Image 5"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+
+    {/* Шестая картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image 6.png"
+        alt="Image 6"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+
+    {/* Седьмая картинка */}
+    <div className="relative overflow-hidden">
+      <img
+        src="/image.png"
+        alt="Image 7"
+        className="object-cover w-full h-full rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
+</div>
+
+
+            
         </main>
     );
 }
