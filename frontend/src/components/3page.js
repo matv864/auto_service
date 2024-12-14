@@ -1,8 +1,8 @@
 function Third() {
     return (
-        <main className="relative flex-grow min-h-screen bg-black p-6 sm:p-10 grid grid-rows-2 gap-6 items-center">
+        <main id="first" className="relative flex-grow min-h-screen bg-black p-6 sm:p-10 grid grid-rows-2 gap-6 items-center">
 
-            <div className="text-white text-sm sm:text-base lg:text-lg text-center sm:text-left leading-relaxed">
+            <div id="about" className="text-white text-sm sm:text-base lg:text-lg text-center sm:text-left leading-relaxed">
                 Компания **EV Service** в Хабаровске — это надежный сервисный центр, который специализируется на профессиональном ремонте и техническом обслуживании автомобилей. Мы обеспечиваем комплексный подход к каждому автомобилю, начиная от точной диагностики и заканчивая полным ремонтом любых узлов и систем.
                 <br />
                 <br />
