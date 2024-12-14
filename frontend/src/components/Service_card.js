@@ -1,6 +1,6 @@
 function Serv_card({ name, description, price }) {
     return (
-      <div className="p-4">
+      <div className=" flex justify-center p-4">
         <div className="h-full w-[90%] bg-black rounded-2xl grid grid-rows-4 justify-center items-center text-white text-center p-4">
           <p className="text-3xl">{name}</p>
           <p className="text-xl">{description || "Описание отсутствует"}</p>
