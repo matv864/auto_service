@@ -63,7 +63,7 @@ function Second() {
       </div>
 
       {/* Отображаем карточки контента */}
-      <div className="px-4 pb-4 sm:px-10 grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="px-4 pb-4 sm:px-10 grid grid-cols-1 xl:grid-cols-2 gap-6 overflow-hidden">
         {loading ? (
           <p className="text-white">Загрузка...</p>
         ) : (
