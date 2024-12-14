@@ -1,55 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./header";
 import Footer from "./footer";
 
 function Serv_form() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    city: "",
-    comment: "",
-  });
-
-  // Обработчик изменения данных в форме
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault(); // Предотвращает стандартное поведение отправки формы
-
-    const data = {
-      first_name: formData.name, // Например, поле name в форме отправляем как first_name
-      last_name: "", // Можно добавить если будет поле last_name
-      additional_contacts: formData.comment,
-      phone: formData.phone,
-      service_id: 3, // Используйте правильный ID услуги
-    };
-
-    try {
-      // Отправка POST запроса через fetch
-      const response = await fetch('https://backend.auto.love-this-domen.ru/service-request', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // Если запрос успешен, перенаправляем на другую страницу
-        window.location.href = "/#head"; // Перенаправление после успешной отправки
-      } else {
-        console.error('Ошибка отправки данных:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Ошибка сети:', error);
-    }
+    window.location.href = "/#head"; // Перенаправляет пользователя
   };
 
   return (
@@ -73,24 +29,18 @@ function Serv_form() {
                 <input
                   type="text"
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
                   placeholder="Имя..."
                   className="w-full p-3 md:p-4 bg-white text-black placeholder-black border border-white rounded-2xl text-sm md:text-md focus:outline-none focus:ring-2 focus:ring-white"
                 />
                 <input
                   type="text"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
                   placeholder="Номер телефона..."
                   className="w-full p-3 md:p-4 bg-white text-black placeholder-black border border-white rounded-2xl text-sm md:text-md focus:outline-none focus:ring-2 focus:ring-white"
                 />
                 <input
                   type="text"
                   name="city"
-                  value={formData.city}
-                  onChange={handleChange}
                   placeholder="Город..."
                   className="w-full p-3 md:p-4 bg-white text-black placeholder-black border border-white rounded-2xl text-sm md:text-md focus:outline-none focus:ring-2 focus:ring-white"
                 />
@@ -98,8 +48,6 @@ function Serv_form() {
               <div>
                 <textarea
                   name="comment"
-                  value={formData.comment}
-                  onChange={handleChange}
                   placeholder="Комментарий..."
                   className="h-full w-full p-4 md:p-6 bg-white text-black placeholder-black border-none rounded-2xl text-lg md:text-xl focus:outline-none"
                 ></textarea>
