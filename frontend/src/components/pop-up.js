@@ -6,7 +6,7 @@ const PopupCard = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCard(true); 
-    }, 60000); // 60 секунд
+    }, 5000); // 60 секунд
 
     return () => clearTimeout(timer);
   }, []);
@@ -22,7 +22,8 @@ const PopupCard = () => {
         <p>
           Есть вопросы? Мы поможем!<br />
           Позвони по номеру <strong>+7(928)456-32-11</strong><br />
-          Консультация по телефону бесплатно!
+          Консультация по телефону бесплатно!<br/>
+          <a href="https://t.me/rfnuizsfbr_bot" class="text-black underline">ТГ-БОТ!</a><br/>
         </p>
 
         </div>
