@@ -7,7 +7,7 @@ services:
     restart: always
     env_file: .env
     volumes:
-      - ./backend/public:/public
+      - ./backend/public:/backend/public
     depends_on:
       - database
     ports:
